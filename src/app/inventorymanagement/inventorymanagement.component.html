@@ -1,0 +1,12 @@
+<h2>Inventory Management</h2>
+
+<div *ngFor="let product of inventory" class="inventory-item">
+  <p>
+    Product Name: {{ product.productName }} ({{ product.quantity }})
+    <span class="refill-message" *ngIf="product.quantity === 0">
+      {{ getRefillMessage(product.productName) }}
+    </span>
+  </p>
+  <button (click)="decreaseQuantity(product.productName)">-</button>
+  <button (click)="increaseQuantity(product.productName)">+</button>
+</div>

@@ -1,0 +1,21 @@
+<h2>Purchase History</h2>
+
+<div *ngFor="let purchase of purchaseHistory">
+  <div class="purchase-item">
+    <div class="purchase-details">
+      <p>Purchased Date: {{ purchase.date | date : "MMM d, y" }}</p>
+    </div>
+    <ul>
+      <li *ngFor="let item of purchase.products">
+        Product Name: {{ item.product.name }} ({{ item.quantity }}), Price:
+        {{ item.product.price * item.quantity | currency : "USD" }}
+        <br />
+        Expiry Date: {{ item.product.expiryDate | date : "MMM d, y" }}
+      </li>
+    </ul>
+    <div class="total-price">
+      Total Price:
+      {{ calculateTotalPrice(purchase.products) | currency : "USD" }}
+    </div>
+  </div>
+</div>
